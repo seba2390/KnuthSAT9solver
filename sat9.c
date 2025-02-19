@@ -638,10 +638,11 @@ int main (int argc, char *argv[]) {
     fprintf(stderr,"(unit propagation fixed %d more variable%s)\n",
       unitcount,unitcount==1?"":"s");
   /* Output the reduced problem */
-  sprintf(name_buf,"/tmp/sat9-%d.dat",random_seed);
+  system("mkdir -p output");
+  sprintf(name_buf,"output/sat9-%d.dat",random_seed);
   out_file=fopen(name_buf,"w");
   if (!out_file) {
-    fprintf(stderr,"I can't open `%s' for writing!\n");
+    fprintf(stderr,"I can't open `%s' for writing!\n", name_buf);
     exit(-668);
   }
   for (kk=k=p=c=0;c<clauses;c++) {
